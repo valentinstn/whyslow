@@ -1,5 +1,6 @@
 /build
 /venv
+/dist
 __pycache__
 /whyslow.egg-info
 .DS_Store
