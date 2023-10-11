@@ -5,8 +5,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup( 
     name='whyslow', 
-    version='0.1.4', 
-    description='Developer-friendly performance profiling utilities for Python', 
+    version='0.1.5', 
+    description='Developer-friendly performance profiling utility for Python', 
     long_description=long_description,
     long_description_content_type="text/markdown",    
     author='valentinstn', 

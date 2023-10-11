@@ -1,6 +1,6 @@
-<h1 align="center">WhySlow?</h1>
+<h1 align="center">WhySlow 🐌</h1>
 <p align="center">
-    <em>Developer-friendly performance profiling utilities for Python</em>
+    <em>Developer-friendly performance profiling utility for Python</em>
 </p>
 
 `WhySlow` simplifies the usage of [cProfile](https://docs.python.org/3/library/profile.html) and [snakeviz](https://github.com/jiffyclub/snakeviz). It offers the fastest way to get from slow code to flame chart and start the performance optimization investigations.
