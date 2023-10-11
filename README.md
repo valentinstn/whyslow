@@ -26,7 +26,7 @@ There are three ways to use this profiler.
 ```py
 from whyslow import profile
 
-@profile
+@profile()
 def my_slow_function():
     # do expensive operations
 ```
