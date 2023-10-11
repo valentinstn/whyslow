@@ -2,13 +2,12 @@ import sys
 import os
 from subprocess import call
 from tempfile import mkdtemp
-from .utils import show_results
+from .utils import show_results, get_profile_file_path
 
 if len(sys.argv) != 2:
     raise AssertionError('No file name provided to be executed')
 
-temp_dir = mkdtemp()
-profile_file = f"{temp_dir}/profile.prof"
+profile_file = get_profile_file_path()
 call([sys.executable, '-m', 'cProfile', '-o', profile_file, *sys.argv[1:]])
 
 if os.path.exists(profile_file):

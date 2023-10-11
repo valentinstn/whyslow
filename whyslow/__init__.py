@@ -1,5 +1,5 @@
 from functools import wraps
-from .utils import show_results, record_stats
+from .utils import show_results, record_stats, get_profile_file_path
 
 
 class profile:
@@ -13,7 +13,6 @@ class profile:
             open_flamechart=True,
             print_stats=False,
             verbose=False) -> None:
-        self.profile_file = None
         self.profiler = None
         self.open_flamechart = open_flamechart
         self.print_stats = print_stats
@@ -36,15 +35,17 @@ class profile:
         self._dump_stats_and_analyze()
 
     def _dump_stats_and_analyze(self):
+        profile_file = get_profile_file_path()
+
         print(f'\nNew profiling result')
-        print(f'Run "python -m snakeviz {self.profile_file}" to re-render '
+        print(f'Run "python -m snakeviz {profile_file}" to re-render '
                 'the flame chart.')
 
         self.profiler.disable()
-        self.profiler.dump_stats(self.profile_file)
+        self.profiler.dump_stats(profile_file)
 
         show_results(
-            profile_file=self.profile_file,
+            profile_file=profile_file,
             open_flamechart=self.open_flamechart,
             print_stats=self.print_stats,
             verbose=self.verbose
