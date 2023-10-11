@@ -10,12 +10,9 @@ class profile:
     """
     def __init__(
             self, 
-            output_dir=None,
             open_flamechart=True,
             print_stats=False,
             verbose=False) -> None:
-        self.output_dir = output_dir
-        self.temp_dir = None
         self.profile_file = None
         self.profiler = None
         self.open_flamechart = open_flamechart
@@ -40,17 +37,16 @@ class profile:
 
     def _dump_stats_and_analyze(self):
         print(f'\nNew profiling result')
-        if not self.max_profile_limit_reached:
-            print(f'Run "python -m snakeviz {self.profile_file}" to re-render '
-                  'the flame chart.')
+        print(f'Run "python -m snakeviz {self.profile_file}" to re-render '
+                'the flame chart.')
 
-            self.profiler.disable()
-            self.profiler.dump_stats(self.profile_file)
+        self.profiler.disable()
+        self.profiler.dump_stats(self.profile_file)
 
-            show_results(
-                profile_file=self.profile_file,
-                open_flamechart=self.open_flamechart,
-                print_stats=self.print_stats,
-                verbose=self.verbose
-            )
+        show_results(
+            profile_file=self.profile_file,
+            open_flamechart=self.open_flamechart,
+            print_stats=self.print_stats,
+            verbose=self.verbose
+        )
         print('\n')
