@@ -7,27 +7,7 @@ class profile:
     A profiling decorator and context manager. It uses cProfile to profile the 
     execution of Python code and uses snakeviz to visualize the results in a 
     developer-friendly way.
-    
-    Usage as decorator:
-    
-    >>> from whyslow import profile
-    >>> @profile
-    >>> def function_to_be_profiled():
-    >>>     do_expensive_operation()
-
-    Usage as context manager:
-
-    >>> from whyslow import profile
-    >>> with profile():
-    >>>     do_expensive_operation() 
-
-    Usage as module:
-
-    $ python -m whyslow slow_script.py
     """
-
-    warning_raised: bool = False
-
     def __init__(
             self, 
             output_dir=None,
@@ -59,7 +39,7 @@ class profile:
         self._dump_stats_and_analyze()
 
     def _dump_stats_and_analyze(self):
-        print(f'\nNew profiling result [{self.profile_count}]')
+        print(f'\nNew profiling result')
         if not self.max_profile_limit_reached:
             print(f'Run "python -m snakeviz {self.profile_file}" to re-render '
                   'the flame chart.')

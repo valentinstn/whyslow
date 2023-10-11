@@ -6,7 +6,7 @@ from tempfile import mkdtemp
 from cProfile import Profile
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-PROCESS_KILLER_PATH = os.path.join(BASE_DIR, 'process_killer.py')
+PROCESS_KILLER_PATH = os.path.join(BASE_DIR, '_process_killer.py')
 
 
 def record_stats() -> Profile:
