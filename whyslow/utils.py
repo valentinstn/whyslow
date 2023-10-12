@@ -6,7 +6,7 @@ from tempfile import mkdtemp
 from cProfile import Profile
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-PROCESS_KILLER_PATH = os.path.join(BASE_DIR, '_process_killer.py')
+TERM_PROCESS_PATH = os.path.join(BASE_DIR, 'term_process.py')
 
 
 def record_stats() -> Profile:
@@ -22,7 +22,7 @@ def show_results(
         verbose: bool) -> None:
     """Shows the profiling results, either as flamechart, and/or as text output"""
     if open_flamechart:
-        print('Opening flamechart now.')
+        print('Opening flamechart...')
         # Start snakeviz to show the results
         process = subprocess.Popen(
             [sys.executable, '-m', 'snakeviz', profile_file], 
@@ -31,7 +31,7 @@ def show_results(
 
         # Shutdown snakeviz process after the browser had time to open the results
         subprocess.Popen(
-            [sys.executable, PROCESS_KILLER_PATH, str(process.pid)]
+            [sys.executable, TERM_PROCESS_PATH, str(process.pid)]
         )
         
     # Print the profiling statistics

@@ -1,7 +1,6 @@
 import sys 
 import os
 from subprocess import call
-from tempfile import mkdtemp
 from .utils import show_results, get_profile_file_path
 
 if len(sys.argv) != 2:
